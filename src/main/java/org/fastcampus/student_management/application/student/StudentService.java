@@ -25,27 +25,13 @@ public class StudentService {
 
   public void activateStudent(String name) {
     // TODO: 과제 구현 부분
-    Student student = studentRepository.findByName(name)
-        .orElseThrow(() -> new IllegalArgumentException("해당하는 학생이 없습니다."));
-
-    if(student.isActivate()){
-      System.out.println("해당하는 학생은 이미 활성 상태입니다.");
-    } else{
-      student.setActivated(true);
-      studentRepository.save(student);
-    }
+    Student student = this.getStudent(name);
+    student.activate();
   }
 
   public void deactivateStudent(String name) {
     // TODO: 과제 구현 부분
-    Student student = studentRepository.findByName(name)
-        .orElseThrow(() -> new IllegalArgumentException("해당하는 학생이 없습니다."));
-
-    if(!student.isActivate()){
-      System.out.println("해당하는 학생은 이미 비활성 상태입니다.");
-    } else{
-      student.setActivated(false);
-      studentRepository.save(student);
-    }
+    Student student = this.getStudent(name);
+    student.deactivate();
   }
 }

@@ -33,7 +33,17 @@ public class Student {
     return activated;
   }
 
-  public void setActivated(boolean activated){
-    this.activated = activated;
+  public void activate(){
+    if(this.activated){
+      throw new IllegalArgumentException("이미 활성 상태입니다.");
+    }
+    this.activated = true;
+  }
+
+  public void deactivate(){
+    if(!this.activated){
+      throw new IllegalArgumentException("이미 비활성 상태입니다.");
+    }
+    this.activated = false;
   }
 }
