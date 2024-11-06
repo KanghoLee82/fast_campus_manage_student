@@ -41,22 +41,22 @@ public class Main {
     UserInputType userInputType = studentController.getUserInput();
     while (userInputType != UserInputType.EXIT) {
       switch (userInputType) {
-        case NEW_STUDENT:
+        case NEW_STUDENT: //학생 추가
           studentController.registerStudent();
           break;
-        case NEW_COURSE:
+        case NEW_COURSE:  //수업 등록
           courseController.registerCourse();
           break;
-        case SHOW_COURSE_DAY_OF_WEEK:
+        case SHOW_COURSE_DAY_OF_WEEK: //요일별 수업 조회
           courseController.showCourseDayOfWeek();
           break;
-        case ACTIVATE_STUDENT:
+        case ACTIVATE_STUDENT:  //학생 활성화
           studentController.activateStudent();
           break;
-        case DEACTIVATE_STUDENT:
+        case DEACTIVATE_STUDENT:  //학생 비활성화
           studentController.deactivateStudent();
           break;
-        case CHANGE_FEE:
+        case CHANGE_FEE:  //수강료 변경
           courseController.changeFee();
           break;
         default:
