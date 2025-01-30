@@ -26,10 +26,23 @@ public class CourseService {
 
   public List<CourseInfoDto> getCourseDayOfWeek(DayOfWeek dayOfWeek) {
     // TODO: 과제 구현 부분
-    return new ArrayList<>();
+    return courseRepository.getCourseDayOfWeek(dayOfWeek).stream().map(CourseInfoDto::new).toList();
   }
 
   public void changeFee(String studentName, int fee) {
     // TODO: 과제 구현 부분
+    Student student = studentService.getStudent(studentName);
+
+    List<Course> newCourse = courseRepository.getCourseListByStudent(studentName).stream()
+        .map(course -> new Course(
+            student,
+            course.getCourseName(),
+            fee,
+            course.getDayOfWeek(),
+            course.getCourseTime())).toList();
+
+    for (Course course : newCourse) {
+      courseRepository.save(course);
+    }
   }
 }
